@@ -5,3 +5,4 @@ include_directories("${CUDD_UTIL_DIR}")
 include_directories("${CUDD_SOURCE_DIR}")
 
 add_library(cuddObj "${CMAKE_CURRENT_SOURCE_DIR}/cuddObj.cc")
+target_link_libraries(cuddObj cudd)
