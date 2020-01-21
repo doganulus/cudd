@@ -28,8 +28,8 @@ if test x$with_system_qsort != xno ; then
 fi
 
 # Set our own default (instead of "-g -O2") unless CFLAGS is already defined.
-: ${CFLAGS="-Wall -Wextra -g -O3"}
-: ${CXXFLAGS="-Wall -Wextra -std=c++0x -g -O3"}
+: ${CFLAGS="-Wall -Wextra -g -O3 -fPIC -pthread"}
+: ${CXXFLAGS="-Wall -Wextra -std=c++0x -g -O3 -fPIC -pthread"}
 
 AC_PROG_CC
 AC_PROG_CXX
