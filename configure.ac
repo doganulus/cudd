@@ -9,6 +9,7 @@ AC_CANONICAL_HOST
 AM_INIT_AUTOMAKE(
   [-Wall -Werror foreign subdir-objects color-tests silent-rules]
 )
+AM_MAINTAINER_MODE([disable])
 AC_REQUIRE_AUX_FILE([tap-driver.sh])
 
 AC_ARG_ENABLE([dddmp],

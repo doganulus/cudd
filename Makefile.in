@@ -725,6 +725,7 @@ LIBTOOL = @LIBTOOL@
 LIPO = @LIPO@
 LN_S = @LN_S@
 LTLIBOBJS = @LTLIBOBJS@
+MAINT = @MAINT@
 MAKEINDEX = @MAKEINDEX@
 MAKEINFO = @MAKEINFO@
 MANIFEST_TOOL = @MANIFEST_TOOL@
@@ -960,7 +961,7 @@ all: config.h
 .SUFFIXES: .c .cc .lo .log .o .obj .test .test$(EXEEXT) .trs
 am--refresh: Makefile
 	@:
-$(srcdir)/Makefile.in:  $(srcdir)/Makefile.am $(top_srcdir)/cudd/Included.am $(top_srcdir)/util/Included.am $(top_srcdir)/st/Included.am $(top_srcdir)/epd/Included.am $(top_srcdir)/mtr/Included.am $(top_srcdir)/dddmp/Included.am $(top_srcdir)/cplusplus/Included.am $(top_srcdir)/nanotrav/Included.am $(top_srcdir)/doc/Included.am $(am__configure_deps)
+$(srcdir)/Makefile.in: @MAINTAINER_MODE_TRUE@ $(srcdir)/Makefile.am $(top_srcdir)/cudd/Included.am $(top_srcdir)/util/Included.am $(top_srcdir)/st/Included.am $(top_srcdir)/epd/Included.am $(top_srcdir)/mtr/Included.am $(top_srcdir)/dddmp/Included.am $(top_srcdir)/cplusplus/Included.am $(top_srcdir)/nanotrav/Included.am $(top_srcdir)/doc/Included.am $(am__configure_deps)
 	@for dep in $?; do \
 	  case '$(am__configure_deps)' in \
 	    *$$dep*) \
@@ -987,9 +988,9 @@ $(top_srcdir)/cudd/Included.am $(top_srcdir)/util/Included.am $(top_srcdir)/st/I
 $(top_builddir)/config.status: $(top_srcdir)/configure $(CONFIG_STATUS_DEPENDENCIES)
 	$(SHELL) ./config.status --recheck
 
-$(top_srcdir)/configure:  $(am__configure_deps)
+$(top_srcdir)/configure: @MAINTAINER_MODE_TRUE@ $(am__configure_deps)
 	$(am__cd) $(srcdir) && $(AUTOCONF)
-$(ACLOCAL_M4):  $(am__aclocal_m4_deps)
+$(ACLOCAL_M4): @MAINTAINER_MODE_TRUE@ $(am__aclocal_m4_deps)
 	$(am__cd) $(srcdir) && $(ACLOCAL) $(ACLOCAL_AMFLAGS)
 $(am__aclocal_m4_deps):
 
@@ -1000,7 +1001,7 @@ config.h: stamp-h1
 stamp-h1: $(srcdir)/config.h.in $(top_builddir)/config.status
 	@rm -f stamp-h1
 	cd $(top_builddir) && $(SHELL) ./config.status config.h
-$(srcdir)/config.h.in:  $(am__configure_deps) 
+$(srcdir)/config.h.in: @MAINTAINER_MODE_TRUE@ $(am__configure_deps) 
 	($(am__cd) $(top_srcdir) && $(AUTOHEADER))
 	rm -f stamp-h1
 	touch $@
